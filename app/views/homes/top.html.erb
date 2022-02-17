@@ -1,5 +1,11 @@
-<h1>simple kakeibo</h1>
-<p>シンプルな家計簿です</p>
-
-<h3>科目設定</h3>
-<%= link_to '収入科目設定', incomes_path %>
+<div class="container">
+  <h1>らくらく家計簿</h1>
+  <p>シンプルな家計簿です</p>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>科目設定</h3>
+      <%= link_to "収入科目設定", incomes_path %>
+      <%= link_to "固定費科目設定", fixedcosts_path %>
+    </div>
+  </div>
+</div>

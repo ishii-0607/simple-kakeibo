@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h2>収入科目詳細</h2>
+    <div class="col-md-12">
+      <table>
+        <tr>
+          <th>名称</th>
+          <td><%= @income.name %></td>
+        </tr>
+        <tr>
+          <th>備考</th>
+          <td><%= @income.description %></td>
+        </tr>
+      </table>
+      <%= link_to "編集する", edit_income_path %>
+      <%= link_to "収入科目一覧に戻る", incomes_path %>
+    </div>
+  </div>
+</div>

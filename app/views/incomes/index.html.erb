@@ -1,20 +1,30 @@
 <div class="container">
   <div class="row">
     <h2>収入科目一覧</h2>
-    <div class="col-lg-12">
+    <div class="col-md-12">
+      <%= link_to "収入科目の新規登録", new_income_path %>
       <% if @incomes.present? %>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th>科目名</th>
             <th>備考</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @incomes.each do |income| %>
             <tr>
-              <td><%= income.name %></td>
+              <td>
+                <%= link_to income_path(income.id) do %>
+                  <%= income.name %>
+                <% end %>
+              </td>
               <td><%= income.description %></td>
+              <td>
+                <%= link_to "編集", edit_income_path(income.id), class: "btn btn-success mr-5" %>
+                <%= link_to "削除", income_path(income.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+              </td>
             </tr>
           <% end %>
         </tbody>
