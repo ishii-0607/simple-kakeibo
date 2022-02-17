@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h2>収入科目一覧</h2>
+    <div class="col-lg-12">
+      <% if @incomes.present? %>
+      <table>
+        <thead>
+          <tr>
+            <th>科目名</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @incomes.each do |income| %>
+            <tr>
+              <td><%= income.name %></td>
+              <td><%= income.description %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% else %>
+        <p>登録されている収入科目がありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
