@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :incomes
   resources :fixedcosts
+  resources :variablecosts
 
 end

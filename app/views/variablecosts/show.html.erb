@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h2>変動費科目詳細</h2>
+    <div class="col-md-12">
+      <table>
+        <tr>
+          <th>日付</th>
+          <td><%= @variablecost.year_month %></td>
+        </tr>
+        <tr>
+          <th>名称</th>
+          <td><%= @variablecost.name %></td>
+        </tr>
+        <tr>
+          <th>金額</th>
+          <td><%= @variablecost.value %></td>
+        </tr>
+        <tr>
+          <th>備考</th>
+          <td><%= @variablecost.description %></td>
+        </tr>
+      </table>
+      <%= link_to "編集する", edit_variablecost_path %>
+      <%= link_to "変動費科目一覧に戻る", variablecosts_path %>
+    </div>
+  </div>
+</div>

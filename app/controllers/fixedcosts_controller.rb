@@ -46,7 +46,7 @@ class FixedcostsController < ApplicationController
   private
 
   def fixedcost_params
-    params.require(:fixedcost).permit(:name, :description)
+    params.require(:fixedcost).permit(:name, :description, :year_month, :value)
   end
 
 end

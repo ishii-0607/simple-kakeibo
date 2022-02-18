@@ -4,8 +4,16 @@
     <div class="col-md-12">
       <table>
         <tr>
+          <th>日付</th>
+          <td><%= @fixedcost.year_month %></td>
+        </tr>
+        <tr>
           <th>名称</th>
           <td><%= @fixedcost.name %></td>
+        </tr>
+        <tr>
+          <th>金額</th>
+          <td><%= @fixedcost.value %></td>
         </tr>
         <tr>
           <th>備考</th>

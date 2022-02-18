@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <h2>変動費科目一覧</h2>
+    <div class="col-md-12">
+      <%= link_to "収入科目の新規登録", new_variablecost_path %>
+      <% if @variablecosts.present? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>科目名</th>
+            <th>金額</th>
+            <th>備考</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @variablecosts.each do |variablecost| %>
+            <tr>
+              <td>
+                <%= link_to variablecost_path(variablecost.id) do %>
+                  <%= variablecost.year_month %>
+                <% end %>
+              </td>
+              <td><%= variablecost.name %></td>
+              <td><%= variablecost.value %></td>
+              <td><%= variablecost.description %></td>
+              <td>
+                <%= link_to "編集", edit_variablecost_path(variablecost.id), class: "btn btn-success mr-5" %>
+                <%= link_to "削除", variablecost_path(variablecost.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% else %>
+        <p>登録されている収入科目がありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
