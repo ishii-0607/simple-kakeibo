@@ -4,8 +4,9 @@ class CreateVariablecosts < ActiveRecord::Migration[5.2]
 
       t.string :name, null: false
       t.string :description
-      t.date :year_month
       t.integer :value
+      t.integer :user_id
+      t.datetime :start_time
 
       t.timestamps
     end

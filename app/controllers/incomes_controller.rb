@@ -17,8 +17,10 @@ class IncomesController < ApplicationController
   end
 
   def create
-    @income = Income.new(income_params)
-    if @income.save
+    income = Income.new(income_params)
+    income.user_id = current_user.id
+    if income.save!
+      Cost.create!(income_id: income.id, value: income.value, start_time: income.start_time)
       flash[:notice] = "収入科目を登録しました"
       redirect_to incomes_path
     else
@@ -46,7 +48,7 @@ class IncomesController < ApplicationController
   private
 
   def income_params
-    params.require(:income).permit(:name, :description, :year_month, :value)
+    params.require(:income).permit(:name, :description, :start_time, :value)
   end
 
 end

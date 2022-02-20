@@ -17,8 +17,10 @@ class FixedcostsController < ApplicationController
   end
 
   def create
-    @fixedcost = Fixedcost.new(fixedcost_params)
-    if @fixedcost.save
+    fixedcost = Fixedcost.new(fixedcost_params)
+    fixedcost.user_id = current_user.id
+    if fixedcost.save!
+      Cost.create!(fixedcost_id: fixedcost.id, value: fixedcost.value, start_time: fixedcost.start_time)
       flash[:notice] = "固定費科目を登録しました"
       redirect_to fixedcosts_path
     else
@@ -46,7 +48,7 @@ class FixedcostsController < ApplicationController
   private
 
   def fixedcost_params
-    params.require(:fixedcost).permit(:name, :description, :year_month, :value)
+    params.require(:fixedcost).permit(:name, :description, :start_time, :value)
   end
 
 end

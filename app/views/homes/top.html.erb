@@ -9,8 +9,20 @@
       <p><%= link_to "変動費科目設定", variablecosts_path %></p>
     </div>
     <div class="col-md-9">
-      <%= month_calendar do |date| %>
+      <%= month_calendar events: @costs do |date, costs| %>
         <%= date.day %>
+
+        <% income = 0 %>
+        <% sam = 0 %>
+
+        <% costs.each do |cost| %>
+          <% income += cost.income.value if cost.income.present? %>
+          <% sam += cost.fixedcost.value if cost.fixedcost.present? %>
+          <% sam += cost.variablecost.value if cost.variablecost.present? %>
+        <% end %>
+        <%= income %>
+        <%= sam %>
+
       <% end %>
     </div>
   </div>

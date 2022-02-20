@@ -19,7 +19,7 @@
             <tr>
               <td>
                 <%= link_to income_path(income.id) do %>
-                  <%= income.year_month %>
+                  <%= income.start_time.strftime('%Y/%m/%d') %>
                 <% end %>
               </td>
               <td><%= income.name %></td>

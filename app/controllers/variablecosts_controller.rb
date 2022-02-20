@@ -17,8 +17,10 @@ class VariablecostsController < ApplicationController
   end
 
   def create
-    @variablecost = Variablecost.new(variablecost_params)
-    if @variablecost.save
+    variablecost = Variablecost.new(variablecost_params)
+    variablecost.user_id = current_user.id
+    if variablecost.save!
+      Cost.create!(variablecost_id: variablecost.id, value: variablecost.value, start_time: variablecost.start_time)
       flash[:notice] = "変動費科目を登録しました"
       redirect_to variablecosts_path
     else
@@ -46,7 +48,7 @@ class VariablecostsController < ApplicationController
   private
 
   def variablecost_params
-    params.require(:variablecost).permit(:name, :description, :year_month, :value)
+    params.require(:variablecost).permit(:name, :description, :start_time, :value)
   end
 
 end
