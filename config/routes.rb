@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'users/show'
+  #get 'users/show'
   root to: 'homes#top'
   devise_for :users
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
   resources :incomes
   resources :fixedcosts
   resources :variablecosts

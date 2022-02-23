@@ -19,15 +19,15 @@
             <tr>
               <td>
                 <%= link_to fixedcost_path(fixedcost.id) do %>
-                  <%= fixedcost.start_time %>
+                  <%= fixedcost.start_time.strftime('%Y/%m/%d') %>
                 <% end %>
               </td>
               <td><%= fixedcost.name %></td>
               <td><%= fixedcost.value %></td>
               <td><%= fixedcost.description %></td>
               <td>
-                <%= link_to "編集", edit_fixedcost_path(fixedcost.id) %>
-                <%= link_to "削除", fixedcost_path(fixedcost.id), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+                <%= link_to "編集", edit_fixedcost_path(fixedcost.id), class: "btn btn-success mr-5" %>
+                <%= link_to "削除", fixedcost_path(fixedcost.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
               </td>
             </tr>
           <% end %>

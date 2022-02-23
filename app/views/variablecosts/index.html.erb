@@ -19,7 +19,7 @@
             <tr>
               <td>
                 <%= link_to variablecost_path(variablecost.id) do %>
-                  <%= variablecost.start_time %>
+                  <%= variablecost.start_time.strftime('%Y/%m/%d') %>
                 <% end %>
               </td>
               <td><%= variablecost.name %></td>

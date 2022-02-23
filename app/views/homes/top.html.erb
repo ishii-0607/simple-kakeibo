@@ -20,8 +20,8 @@
           <% sam += cost.fixedcost.value if cost.fixedcost.present? %>
           <% sam += cost.variablecost.value if cost.variablecost.present? %>
         <% end %>
-        <%= income %>
-        <%= sam %>
+        <P class="text-success">+<%= income %></P>
+        <p class="text-danger">-<%= sam %></p>
 
       <% end %>
     </div>
