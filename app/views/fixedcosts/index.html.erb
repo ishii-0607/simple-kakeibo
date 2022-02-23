@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <h2>固定費科目一覧</h2>
+    <h2 class="mt-5 mb-5">固定費科目一覧</h2>
     <div class="col-md-12">
-      <%= link_to "固定費科目の新規登録", new_fixedcost_path %>
+      <%= link_to "固定費科目の追加", new_fixedcost_path, class: "btn btn-primary" %>
       <% if @fixedcosts.present? %>
       <table class="table">
         <thead>

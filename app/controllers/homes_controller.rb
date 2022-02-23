@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
 
   def top
-    @costs = Cost.all
+    @costs = current_user.costs
   end
 
 end

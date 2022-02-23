@@ -1,7 +1,7 @@
 class FixedcostsController < ApplicationController
 
   def index
-    @fixedcosts = Fixedcost.all.order(created_at: :asc)
+    @fixedcosts = current_user.fixedcosts.order(created_at: :asc)
   end
 
   def show
@@ -20,7 +20,7 @@ class FixedcostsController < ApplicationController
     fixedcost = Fixedcost.new(fixedcost_params)
     fixedcost.user_id = current_user.id
     if fixedcost.save!
-      Cost.create!(fixedcost_id: fixedcost.id, value: fixedcost.value, start_time: fixedcost.start_time)
+      Cost.create!(fixedcost_id: fixedcost.id, value: fixedcost.value, start_time: fixedcost.start_time, user_id: current_user.id)
       flash[:notice] = "固定費科目を登録しました"
       redirect_to fixedcosts_path
     else

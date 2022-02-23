@@ -1,7 +1,7 @@
 class VariablecostsController < ApplicationController
 
   def index
-    @variablecosts = Variablecost.all.order(created_at: :asc)
+    @variablecosts = current_user.variablecosts.order(created_at: :asc)
   end
 
   def show
@@ -20,7 +20,7 @@ class VariablecostsController < ApplicationController
     variablecost = Variablecost.new(variablecost_params)
     variablecost.user_id = current_user.id
     if variablecost.save!
-      Cost.create!(variablecost_id: variablecost.id, value: variablecost.value, start_time: variablecost.start_time)
+      Cost.create!(variablecost_id: variablecost.id, value: variablecost.value, start_time: variablecost.start_time, user_id: current_user.id)
       flash[:notice] = "変動費科目を登録しました"
       redirect_to variablecosts_path
     else
