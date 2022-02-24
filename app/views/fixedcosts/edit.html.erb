@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <h2>収入科目編集</h2>
-    <div class="col-md-12">
+    <h2 class="mt-5 mb-5">収入科目編集</h2>
+    <div class="col-md-10">
       <%= form_with model: @fixedcost, local:true do |f| %>
-      <table>
+      <table class="table table-borderless">
         <tr>
           <th><%= f.label :start_time, "日付" %></th>
           <td><%= f.date_select :start_time %></td>
@@ -21,9 +21,9 @@
           <td><%= f.text_field :description %></td>
         </tr>
       </table>
-      <%= f.submit "登録する", class: "btn btn-primary" %>
+      <%= f.submit "登録する", class: "btn btn-info mr-5" %>
+      <%= link_to "収入科目一覧に戻る", fixedcosts_path, class: "btn btn-primary" %>
       <% end %>
-      <%= link_to "収入科目一覧に戻る", fixedcosts_path %>
     </div>
   </div>
 </div>

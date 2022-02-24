@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <h2>変動費科目詳細</h2>
-    <div class="col-md-12">
-      <table>
+    <h2 class="mt-5 mb-5">変動費科目詳細</h2>
+    <div class="col-md-10">
+      <table class="table table-borderless">
         <tr>
           <th>日付</th>
-          <td><%= @variablecost.start_time %></td>
+          <td><%= @variablecost.start_time.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <th>名称</th>
@@ -20,8 +20,8 @@
           <td><%= @variablecost.description %></td>
         </tr>
       </table>
-      <%= link_to "編集する", edit_variablecost_path %>
-      <%= link_to "変動費科目一覧に戻る", variablecosts_path %>
+      <%= link_to "編集する", edit_variablecost_path, class: "btn btn-success mr-5" %>
+      <%= link_to "変動費科目一覧に戻る", variablecosts_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <h2>固定費科目の詳細</h2>
-    <div class="col-md-12">
-      <table>
+    <h2 class="mt-5 mb-5">固定費科目の詳細</h2>
+    <div class="col-md-10">
+      <table class="table table-borderless">
         <tr>
           <th>日付</th>
-          <td><%= @fixedcost.start_time %></td>
+          <td><%= @fixedcost.start_time.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <th>名称</th>
@@ -20,8 +20,8 @@
           <td><%= @fixedcost.description %></td>
         </tr>
       </table>
-      <%= link_to "編集する", edit_fixedcost_path %>
-      <%= link_to "収入科目一覧に戻る", fixedcosts_path %>
+      <%= link_to "編集する", edit_fixedcost_path, class: "btn btn-success mr-5" %>
+      <%= link_to "収入科目一覧に戻る", fixedcosts_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

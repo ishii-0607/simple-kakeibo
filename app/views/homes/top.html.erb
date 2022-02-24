@@ -4,19 +4,40 @@
     <div class="col-md-9">
       <% sum = 0 %>
       <% minus = 0 %>
+      <% cnt = 0 %>
+      <% firstday =0 %>
       <%= month_calendar events: @costs do |date, costs| %>
         <%= date.day %>
 
         <% income = 0 %>
         <% sam = 0 %>
 
-        <% costs.each do |cost| %>
-          <% income += cost.income.value if cost.income.present? %>
-          <% sam += cost.fixedcost.value if cost.fixedcost.present? %>
-          <% sam += cost.variablecost.value if cost.variablecost.present? %>
+        <% if date.day === 1 && cnt === 0 %>
+          <% cnt = 1 %>
+          <% firstday = date.strftime('%Y%m').to_s %>
         <% end %>
-        <P class="text-success">+<%= income %></P>
-        <p class="text-danger">-<%= sam %></p>
+
+        <% costs.each do |cost| %>
+
+          <% if cost.start_time.strftime('%Y%m').to_s === firstday %>
+            <% income += cost.income.value if cost.income.present? %>
+            <% sam += cost.fixedcost.value if cost.fixedcost.present? %>
+            <% sam += cost.variablecost.value if cost.variablecost.present? %>
+          <% end %>
+        <% end %>
+
+        <% if income > 0 %>
+          <P class="text-success">+<%= income %></P>
+        <% else %>
+          <P class="text-success"> </P>
+        <% end%>
+
+        <% if sam > 0 %>
+          <p class="text-danger">-<%= sam %></p>
+        <% else %>
+          <p class="text-danger"> </p>
+        <% end%>
+
         <% sum += income %>
         <% minus += sam %>
 
@@ -24,11 +45,20 @@
     </div>
     <div class="col-md-3">
       <h3>記録の追加</h3>
-      <p><%= link_to "収入科目を記録", incomes_path %></p>
-      <p><%= link_to "固定費科目を記録", fixedcosts_path %></p>
-      <p><%= link_to "変動費科目を記録", variablecosts_path %></p>
-      <%= sum %>
-      <%= minus %>
+      <p><%= link_to "・収入科目を記録", incomes_path, class: "link" %></p>
+      <p><%= link_to "・固定費科目を記録", fixedcosts_path %></p>
+      <p><%= link_to "・変動費科目を記録", variablecosts_path %></p>
+      <table class="table table-bordered">
+        <h3 class="mt-5">今月の合計</h3>
+        <tr>
+          <th>収入合計</th>
+          <td><%= sum %></td>
+        </tr>
+        <tr>
+          <th>支出合計</th>
+          <td><%= minus %></td>
+        </tr>
+      </div>
     </div>
   </div>
 </div>

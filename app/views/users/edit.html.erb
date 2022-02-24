@@ -12,7 +12,8 @@
           <%= f.email_field :email %>
         </div>
         <div class="actions row">
-          <%= f.submit "更新する", class: "btn btn-success" %>
+          <%= f.submit "更新する", class: "btn btn-success mr-5" %>
+          <%= link_to "戻る", user_path, class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>
