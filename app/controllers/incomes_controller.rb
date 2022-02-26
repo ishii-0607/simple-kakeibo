@@ -19,7 +19,7 @@ class IncomesController < ApplicationController
   def create
     income = Income.new(income_params)
     income.user_id = current_user.id
-    if income.save!
+    if income.save
       Cost.create!(income_id: income.id, value: income.value, start_time: income.start_time, user_id: current_user.id)
       #cost.user_id = current_user.id
       flash[:notice] = "収入科目を登録しました"

@@ -19,7 +19,7 @@ class FixedcostsController < ApplicationController
   def create
     fixedcost = Fixedcost.new(fixedcost_params)
     fixedcost.user_id = current_user.id
-    if fixedcost.save!
+    if fixedcost.save
       Cost.create!(fixedcost_id: fixedcost.id, value: fixedcost.value, start_time: fixedcost.start_time, user_id: current_user.id)
       flash[:notice] = "固定費科目を登録しました"
       redirect_to fixedcosts_path

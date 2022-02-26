@@ -26,17 +26,8 @@
           <% end %>
         <% end %>
 
-        <% if income > 0 %>
-          <P class="text-success">+<%= income %></P>
-        <% else %>
-          <P class="text-success"> </P>
-        <% end%>
-
-        <% if sam > 0 %>
-          <p class="text-danger">-<%= sam %></p>
-        <% else %>
-          <p class="text-danger"> </p>
-        <% end%>
+        <P class="text-success">+<%= income %></P>
+        <p class="text-danger">-<%= sam %></p>
 
         <% sum += income %>
         <% minus += sam %>
